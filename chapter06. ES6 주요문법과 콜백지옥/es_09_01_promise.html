@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <script>
+         /*promise로 개선*/
+
+         function add(x) {
+            return new Promise((resolve) => {
+               let sum = x + x
+               console.log(sum)
+               resolve(sum)
+            })
+         }
+
+         add(2)
+            .then((res) => add(4))
+            .then((res) => add(8))
+            .then((res) => {
+               console.log('finish: ' + res)
+            })
+            .catch((err) => {
+               console.error(err)
+            })
+
+         /* promise: 비동기 작업을 처리하고 그 결과를 나중에 사용할 수 있도록 하는 객체 */
+         function asyncTask() {
+            return new Promise((resolve, reject) => {
+               setTimeout(() => {
+                  console.log('Task done')
+                  resolve('Task result')
+               }, 1000)
+            })
+         }
+
+         asyncTask()
+            .then((result) => {
+               console.log(result)
+               return result + ' next'
+            })
+            .then((result) => {
+               console.log(result)
+            })
+            .catch((error) => {
+               console.error(error)
+            })
+
+         /* promise의 3가지 상태 */
+         function asyncTask() {
+            return new Promise((resolve, reject) => {
+               setTimeout(() => {
+                  const success = false //어떤 비동기 작업이 성공했다고 가정
+
+                  if (success) {
+                     resolve('Task success')
+                  } else {
+                     reject('Task failed')
+                  }
+               }, 1000)
+            })
+         }
+
+         asyncTask()
+            .then((result) => {
+               console.log(result)
+            })
+            .catch((error) => {
+               console.error(error)
+            })
+      </script>
+   </head>
+   <body></body>
+</html>

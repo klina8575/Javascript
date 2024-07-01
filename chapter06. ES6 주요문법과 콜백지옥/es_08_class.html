@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <script>
+         //클래스를 사용해 자바스크립트에서도 객체지향코드 작성 가능
+         class MyClass {
+            constructor(name, age) {
+               // 생성자
+               this.name = name
+               this.age = age
+            }
+
+            sayHello() {
+               // 함수
+               console.log(`안녕 ${this.name}! 너의 나이는 ${this.age}살이야`)
+            }
+
+            //static 필드
+            static phone = '01022223333'
+            //static 함수
+            static compareAge() {
+               console.log(`1살`)
+            }
+         }
+
+         // myClass 메서드 및 속성 상속
+         class UserProfile extends MyClass {
+            userName() {
+               console.log(this.name)
+            }
+
+            sayHello() {
+               // 함수
+               console.log(`안녕 ${this.name}! 너의 나이는 30살이야`)
+            }
+         }
+
+         //static 필드와 함수를 객체를 생성하지 않고 호출
+         console.log(MyClass.phone) //01022223333
+         MyClass.compareAge() //1살
+
+         console.log('--------------------------------')
+
+         const profile1 = new MyClass('철수', 24)
+         profile1.sayHello() // 안녕 철수! 너의 나이는 22살이야.
+
+         console.log('--------------------------------')
+
+         const profile2 = new UserProfile('영희', 22)
+         profile2.sayHello() // 안녕 영희! 너의 나이는 22살이야.
+         profile2.userName() // 영희
+      </script>
+   </head>
+   <body></body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <script>
+         let url = 'https://api.openweathermap.org/data/2.5/weather?appid=f98e648c60dee9415bd3b65e176b86ca&units=metric&lang=kr&q=seoul'
+
+         const getWeather = async (url) => {
+            try {
+               const response = await fetch(url)
+               if (!response.ok) {
+                  throw new Error('Response was not ok')
+               }
+               const data = await response.json()
+               console.log('success data:', data)
+            } catch (error) {
+               console.error('에러 발생:', error)
+            }
+         }
+
+         getWeather(url)
+      </script>
+   </head>
+   <body></body>
+</html>
