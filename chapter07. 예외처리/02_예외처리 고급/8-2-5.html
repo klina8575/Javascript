@@ -13,13 +13,12 @@
       function withdrawal(money) {
          if (deposit < money) {
             throw new Error('잔고가 부족합니다.')
-         } else {
-            deposit -= money
          }
+         deposit -= money
       }
 
       withdrawal(11000)
 
-      alert(`${deposit}원 남았습니다.`)
+      console.log(`${deposit}원 남았습니다.`)
    </script>
 </html>
