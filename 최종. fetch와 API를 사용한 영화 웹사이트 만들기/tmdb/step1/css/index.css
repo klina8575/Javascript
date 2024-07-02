@@ -23,18 +23,13 @@ p {
 }
 
 .wrap {
-   overflow: hidden;
-   min-width: 1200px;
 }
 
 main {
-   width: 1200px;
-   margin: 0 auto;
-   overflow: hidden;
 }
 
 footer {
    height: 100px;
    line-height: 100px;
-   background-color: rgb(217, 217, 217);
+   background-color: #f2f2f2;
 }

@@ -27,7 +27,9 @@
          <header>
             <!-- https://getbootstrap.com/docs/5.3/components/navbar/#text-1 -->
             <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #f5fafd !important">
-               <div class="container-fluid">
+               <!-- 5. class를 container로 변경 
+                https://getbootstrap.com/docs/5.3/layout/containers/#how-they-work -->
+               <div class="container">
                   <!-- 1. a태그의 width가 0이여서 안보이므로 100px로 고정 -->
                   <a class="navbar-brand" href="#" style="width: 100px">
                      <img src="./images/logo.svg" />
@@ -84,8 +86,109 @@
                </div>
             </nav>
          </header>
-         <main></main>
-         <footer></footer>
+         <main>
+            <!-- 5. container로 작동하도록 추가 -->
+            <div class="container">
+               <!-- 6. row와 card 추가
+                https://getbootstrap.com/docs/5.3/components/card/#images -->
+               <div class="row">
+                  <div class="card col-sm-3" style="width: 18rem">
+                     <img src="..." class="card-img-top" alt="..." />
+                     <div class="card-body">
+                        <p class="card-text">제목</p>
+                        <p class="card-text">평점</p>
+                     </div>
+                  </div>
+                  <div class="card col-sm-3" style="width: 18rem">
+                     <img src="..." class="card-img-top" alt="..." />
+                     <div class="card-body">
+                        <p class="card-text">제목</p>
+                        <p class="card-text">평점</p>
+                     </div>
+                  </div>
+                  <div class="card col-sm-3" style="width: 18rem">
+                     <img src="..." class="card-img-top" alt="..." />
+                     <div class="card-body">
+                        <p class="card-text">제목</p>
+                        <p class="card-text">평점</p>
+                     </div>
+                  </div>
+                  <div class="card col-sm-3" style="width: 18rem">
+                     <img src="..." class="card-img-top" alt="..." />
+                     <div class="card-body">
+                        <p class="card-text">제목</p>
+                        <p class="card-text">평점</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="card col-sm-3" style="width: 18rem">
+                     <img src="..." class="card-img-top" alt="..." />
+                     <div class="card-body">
+                        <p class="card-text">제목</p>
+                        <p class="card-text">평점</p>
+                     </div>
+                  </div>
+                  <div class="card col-sm-3" style="width: 18rem">
+                     <img src="..." class="card-img-top" alt="..." />
+                     <div class="card-body">
+                        <p class="card-text">제목</p>
+                        <p class="card-text">평점</p>
+                     </div>
+                  </div>
+                  <div class="card col-sm-3" style="width: 18rem">
+                     <img src="..." class="card-img-top" alt="..." />
+                     <div class="card-body">
+                        <p class="card-text">제목</p>
+                        <p class="card-text">평점</p>
+                     </div>
+                  </div>
+                  <div class="card col-sm-3" style="width: 18rem">
+                     <img src="..." class="card-img-top" alt="..." />
+                     <div class="card-body">
+                        <p class="card-text">제목</p>
+                        <p class="card-text">평점</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="card col-sm-3" style="width: 18rem">
+                     <img src="..." class="card-img-top" alt="..." />
+                     <div class="card-body">
+                        <p class="card-text">제목</p>
+                        <p class="card-text">평점</p>
+                     </div>
+                  </div>
+                  <div class="card col-sm-3" style="width: 18rem">
+                     <img src="..." class="card-img-top" alt="..." />
+                     <div class="card-body">
+                        <p class="card-text">제목</p>
+                        <p class="card-text">평점</p>
+                     </div>
+                  </div>
+                  <div class="card col-sm-3" style="width: 18rem">
+                     <img src="..." class="card-img-top" alt="..." />
+                     <div class="card-body">
+                        <p class="card-text">제목</p>
+                        <p class="card-text">평점</p>
+                     </div>
+                  </div>
+                  <div class="card col-sm-3" style="width: 18rem">
+                     <img src="..." class="card-img-top" alt="..." />
+                     <div class="card-body">
+                        <p class="card-text">제목</p>
+                        <p class="card-text">평점</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </main>
+         <footer>
+            <!-- 5. container로 작동하도록 추가 -->
+            <div class="container">
+               <p style="text-align: center">TMDB MOVIE SITE</p>
+            </div>
+         </footer>
       </div>
       <!-- bootstrap -->
       <script
@@ -93,5 +196,7 @@
          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
          crossorigin="anonymous"
       ></script>
+
+      <script src="./js/index.js"></script>
    </body>
 </html>
