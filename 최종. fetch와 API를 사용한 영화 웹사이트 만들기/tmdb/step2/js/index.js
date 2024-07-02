@@ -30,17 +30,11 @@ const getPlayingMovies = async (url) => {
       for (const result of results) {
          //서버에서 받은 데이터 출력
          console.log(result)
+         console.log(result.id)
          console.log(result.title)
          // 혹은 console.log(result['title'])
          console.log(result.poster_path)
          console.log(result.vote_average)
-
-         //서버에서 받은 데이터 바인딩(웹브라우저 화면에 출력)
-         /*
-          어떻게 해야할까?
-          1. 우선 데이터를 바인딩할 요소의 dom을 가져온다.
-          2. 해당 dom에 데이터를 넣어준다.
-         */
       }
    } catch (error) {
       console.error('에러 발생:', error)
