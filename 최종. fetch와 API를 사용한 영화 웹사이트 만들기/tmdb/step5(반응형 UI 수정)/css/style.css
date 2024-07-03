@@ -39,7 +39,7 @@ main .container .row {
 
 /* index.html */
 
-/* 포스터 이미지 비율로 인해 안맞는 크기 고정  */
+/* card 길이 안맞는 부분 수정  */
 main .container .row .card {
    height: 100%;
 }
