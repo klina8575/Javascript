@@ -7,11 +7,11 @@ const options = {
    },
 }
 
-const url = 'https://api.themoviedb.org/3/movie/573435?language=ko-KR'
+const movieDetailUrl = 'https://api.themoviedb.org/3/movie/921436?language=ko-KR'
 
-const getDetailMovie = async (url) => {
+const getDetailMovie = async (movieDetailUrl) => {
    try {
-      const response = await fetch(url, options)
+      const response = await fetch(movieDetailUrl, options)
 
       const data = await response.json()
       console.log('success data:', data)
@@ -20,4 +20,4 @@ const getDetailMovie = async (url) => {
    }
 }
 
-getDetailMovie(url)
+getDetailMovie(movieDetailUrl)

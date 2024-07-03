@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+/* 공통 */
 body {
    margin: 0;
    padding: 0;
@@ -22,10 +23,10 @@ p {
    margin: 0 !important;
 }
 
-.wrap {
-}
-
-main {
+footer {
+   height: 100px;
+   line-height: 100px;
+   background-color: #f2f2f2;
 }
 
 main .container {
@@ -36,12 +37,8 @@ main .container .row {
    justify-content: center;
 }
 
+/* index.html */
+
 main .container .row .card {
    margin: 10px 10px;
-}
-
-footer {
-   height: 100px;
-   line-height: 100px;
-   background-color: #f2f2f2;
 }
