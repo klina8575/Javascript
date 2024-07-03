@@ -38,12 +38,3 @@ main .container .row {
 }
 
 /* index.html */
-
-main .container .row .card {
-   margin: 10px 10px;
-}
-
-/* 포스터 이미지 비율로 인해 안맞는 크기 고정  */
-main .container .row .card img {
-   height: 400px;
-}
