@@ -15,9 +15,9 @@ const movieId = urlParams.get('movie_id')
 //console.log(movieId) // 573435
 
 const movieDetailUrl = `https://api.themoviedb.org/3/movie/${movieId}?language=ko-KR`
-const movieCreditsUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=ko-KR`
 const mainContainer = document.querySelector('main .container')
 
+// 1. 영화 상세정보 바인딩
 const getDetailMovie = async (movieDetailUrl) => {
    try {
       const response = await fetch(movieDetailUrl, options)
@@ -29,8 +29,8 @@ const getDetailMovie = async (movieDetailUrl) => {
 
       const rowHtml = `
                <div class="row">
-                  <div class="col-sm-3">
-                     <img src="${imgSrc}" class="poster-detail" alt="${data.title}"/>
+                  <div class="col-sm-3" style="text-align:center">
+                     <img src="${imgSrc}" class="poster-detail" alt="${data.title}" style="max-width:100%"/>
                   </div>
                   <div class="col-sm-9 movie-detail">
                      <h2>${data.title}</h2>
@@ -57,12 +57,35 @@ const getDetailMovie = async (movieDetailUrl) => {
 
 getDetailMovie(movieDetailUrl)
 
+// 2. 출연 배우 데이터 바인딩
+
+const movieCreditsUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=ko-KR`
+
 const getCreditsMovie = async (movieCreditsUrl) => {
    try {
       const response = await fetch(movieCreditsUrl, options)
 
       const data = await response.json()
-      console.log('success data:', data)
+      console.log('출연배우 및 스태프:', data)
+
+      //출연배우 6명만 출력
+      let castRowHtml = `<div class="row" style="margin-top:30px">`
+
+      for (let i = 0; i < 6; i++) {
+         castRowHtml += `
+         <div class='col-sm-2 p-3'>
+            <div class="card">
+               <img src="https://image.tmdb.org/t/p/w200${data.cast[i].profile_path}" class="card-img-top" alt="${data.cast[i].name}">
+               <div class="card-body">
+                  <p class="card-text">${data.cast[i].name}</p>
+               </div>
+            </div>
+         </div>`
+      }
+
+      castRowHtml += `</div>`
+
+      mainContainer.innerHTML += castRowHtml
    } catch (error) {
       console.error('에러 발생:', error)
    }
