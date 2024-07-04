@@ -15,6 +15,7 @@ const movieId = urlParams.get('movie_id')
 //console.log(movieId) // 573435
 
 const movieDetailUrl = `https://api.themoviedb.org/3/movie/${movieId}?language=ko-KR`
+const movieCreditsUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=ko-KR`
 const mainContainer = document.querySelector('main .container')
 
 // 1. 영화 상세정보 바인딩
@@ -24,7 +25,7 @@ const getDetailMovie = async (movieDetailUrl) => {
       const response = await fetch(movieDetailUrl, options)
 
       const data = await response.json()
-      // console.log('success data:', data)
+      console.log('영화상세정보:', data)
 
       const imgSrc = `https://image.tmdb.org/t/p/w300${data.poster_path}`
 
@@ -51,16 +52,14 @@ const getDetailMovie = async (movieDetailUrl) => {
 
       // console.log(rowHtml)
       mainContainer.innerHTML += rowHtml
+
+      await getCreditsMovie(movieCreditsUrl) //getDetailMovie 함수가 완료 될때까지 기다렸다가 getCreditsMovie실행
    } catch (error) {
       console.error('에러 발생:', error)
    }
 }
 
-getDetailMovie(movieDetailUrl)
-
-// 2.출연 배우 데이터 바인딩(버그 수정 전)
-const movieCreditsUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=ko-KR`
-
+// 2. 출연 배우 데이터 바인딩(버그 수정 후)
 const getCreditsMovie = async (movieCreditsUrl) => {
    try {
       const response = await fetch(movieCreditsUrl, options)
@@ -68,14 +67,19 @@ const getCreditsMovie = async (movieCreditsUrl) => {
       const data = await response.json()
       console.log('출연배우 및 스태프:', data)
 
-      //출연배우 6명만 출력
-      let castRowHtml = `<div class="row" style="margin-top:30px">`
+      let castRowHtml = `<div class="row" style="margin-top:30px; justify-content: flex-start;">`
 
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < data.cast.length; i++) {
+         if (i == 6) break //7명째가 되면 for문 종료
+
+         let profileImg = !data.cast[i].profile_path ? `./images/person.png` : `https://image.tmdb.org/t/p/w200${data.cast[i].profile_path}`
+
          castRowHtml += `
          <div class='col-sm-2 p-3'>
             <div class="card">
-               <img src="https://image.tmdb.org/t/p/w200${data.cast[i].profile_path}" class="card-img-top" alt="${data.cast[i].name}">
+               <img src="${profileImg}"
+               class="card-img-top"
+               alt="${data.cast[i].name}">
                <div class="card-body">
                   <p class="card-text">${data.cast[i].name}</p>
                </div>
@@ -91,45 +95,4 @@ const getCreditsMovie = async (movieCreditsUrl) => {
    }
 }
 
-getCreditsMovie(movieCreditsUrl)
-
-// 2. 출연 배우 데이터 바인딩(버그 수정 후)
-
-// const movieCreditsUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=ko-KR`
-
-// const getCreditsMovie = async (movieCreditsUrl) => {
-//    try {
-//       const response = await fetch(movieCreditsUrl, options)
-
-//       const data = await response.json()
-//       console.log('출연배우 및 스태프:', data)
-
-//       let castRowHtml = `<div class="row" style="margin-top:30px; justify-content: flex-start;">`
-
-//       for (let i = 0; i < data.cast.length; i++) {
-//          if (i == 6) break //7명째가 되면 for문 종료
-
-//          let profileImg = !data.cast[0].profile_path ? `./images/person.png` : `https://image.tmdb.org/t/p/w200${data.cast[i].profile_path}`
-
-//          castRowHtml += `
-//          <div class='col-sm-2 p-3'>
-//             <div class="card">
-//                <img src="${profileImg}"
-//                class="card-img-top"
-//                alt="${data.cast[i].name}">
-//                <div class="card-body">
-//                   <p class="card-text">${data.cast[i].name}</p>
-//                </div>
-//             </div>
-//          </div>`
-//       }
-
-//       castRowHtml += `</div>`
-
-//       mainContainer.innerHTML += castRowHtml
-//    } catch (error) {
-//       console.error('에러 발생:', error)
-//    }
-// }
-
-// getCreditsMovie(movieCreditsUrl)
+getDetailMovie(movieDetailUrl)
