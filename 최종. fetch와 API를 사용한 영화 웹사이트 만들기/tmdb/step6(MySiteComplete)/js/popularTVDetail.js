@@ -20,4 +20,4 @@ const getDetailTv = async (tvDetailUrl) => {
    }
 }
 
-getDetailTv(getDetailTv)
+getDetailTv(tvDetailUrl)
